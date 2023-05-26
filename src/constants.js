@@ -11,6 +11,7 @@ export const PAGE_ACTIVITIES = 'activities'
 export const PAGE_PROGRESS = 'progress'
 
 export const HOURS_IN_DAY = 24
+export const SECONDS_IN_HOUR = 3600
 export const MIDNIGHT_HOUR = 0
 
 export const NAV_ITEMS = {
