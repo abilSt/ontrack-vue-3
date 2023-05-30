@@ -1,5 +1,10 @@
-import { PAGE_TIMELINE, HOURS_IN_DAY, MIDNIGHT_HOUR, SECONDS_IN_HOUR } from './constants'
-import { isPageValid } from './validators'
+import {
+  PAGE_TIMELINE,
+  HOURS_IN_DAY,
+  MIDNIGHT_HOUR,
+  SECONDS_IN_HOUR
+} from './constants'
+import { isPageValid, isNull } from './validators'
 
 export function normalizePageHash() {
   const page = window.location.hash.slice(1)
@@ -13,12 +18,14 @@ export function normalizePageHash() {
   return PAGE_TIMELINE
 }
 
+export function normalizeSelectValue(value) {
+  return isNull(value) || isNaN(value) ? value : +value
+}
+
 export function generateActivities() {
-  return [
-    { id: id(), name: 'Coding', secondsToComplete: 0 * SECONDS_IN_HOUR },
-    { id: id(), name: 'Training', secondsToComplete: 1 * SECONDS_IN_HOUR },
-    { id: id(), name: 'Reading', secondsToComplete: 2 * SECONDS_IN_HOUR }
-  ]
+  return ['Coding', 'Training', 'Reading'].map((name, hours) => {
+    return { id: id(), name, secondsToComplete: hours * SECONDS_IN_HOUR }
+  })
 }
 
 export function id() {
@@ -36,5 +43,8 @@ export function generateTimelineItems() {
 }
 
 export function generateActivitySelectOptions(activities) {
-  return activities.map((activity) => ({ label: activity.name, value: activity.id }))
+  return activities.map((activity) => ({
+    label: activity.name,
+    value: activity.id
+  }))
 }

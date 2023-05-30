@@ -1,5 +1,9 @@
 <script>
-import { BUTTON_TYPE_DANGER, BUTTON_TYPE_NEUTRAL, BUTTON_TYPE_PRIMARY } from '../constants'
+import {
+  BUTTON_TYPE_DANGER,
+  BUTTON_TYPE_NEUTRAL,
+  BUTTON_TYPE_PRIMARY
+} from '../constants'
 import { isButtonTypeValid } from '../validators'
 
 const typeClasses = {
